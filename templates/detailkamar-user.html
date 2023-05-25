@@ -69,6 +69,8 @@
       <h1 class="font-weight-bold">AJUKAN SEWAH</h1>
       <p class="namakost">Nama Kost : {{ kost.namakost }}</p>
       <p class="namakost">Harga Kost : {{ kost.Harga }}</p>
+      <p class="namakost" >Tipe Kamar : {{ kost.TipeKamar }}</p>
+      <p class="namakost" >Fasilitas : {{ kost.FasilitasKOst }}</p>
       <div class="pemesanan">
       {% for admin in data_user %}
       <a class="btn btn-success mr-2" href="https://wa.me/{{ admin.NoTelp }}">whatsapp</a>
