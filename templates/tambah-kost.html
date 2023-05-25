@@ -1,0 +1,110 @@
+{% extends 'layout/main.html' %}
+{% block concat %}
+    {% if messages %}
+    {% for messages in messages %}
+    <p>{{ messages }}</p>
+    {% endfor %}
+    {% endif %}
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">TAMBAH KOST</h3>
+        </div>
+            <form action="{% url 'postmasukkost'%}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+        <div class="card-body">
+                <div class="form-group">
+                    <label for="">ID KAMAR</label>      
+                <input class="form-control" type="text" name="idKamar" id="idKamar" value="{{ kamarkost.idKamar }}" maxlength="100" placeholder="ID KAMAR" required>
+                <div class="form-group">
+                    <label for="">NAMA KOST</label>      
+                <input class="form-control" type="text" name="namakost" id="namakost" value="{{ kamarkost.namakost }}" maxlength="100" placeholder="NAMA KOST" required>
+                    <div class="form-group">
+                <div class="form-group">
+                    <label for="TipeKamar">TIPE KAMAR</label><br>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="TipeKamar" id="premium" value="Premium" required>
+                      <label class="form-check-label" for="available">Premium</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="TipeKamar" id="standard" value="Standard" required>
+                      <label class="form-check-label" for="occupied">Standard</label>
+                    </div>
+                  </div>
+                    <div class="form-group">
+                    <label for="">HARGA</label> 
+                <input class="form-control" type="text" name="Harga" id="Harga" value="{{ kamarkost.Harga }}" maxlength="50" placeholder="HARGA" required>
+                    <div class="form-group">
+                    <label for="FasilitasKOst">FASILITAS KOST</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="FasilitasKOst[]" value="ac" id="ac">
+                        <label class="form-check-label" for="ac">AC</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="FasilitasKOst[]" value="lemari" id="lemari">
+                        <label class="form-check-label" for="lemari">Lemari</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="FasilitasKOst[]" value="meja" id="meja">
+                        <label class="form-check-label" for="meja">Meja</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="FasilitasKOst[]" value="kamar_mandi" id="kamar_mandi">
+                        <label class="form-check-label" for="kamar_mandi">Kamar Mandi</label>
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label><br>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="status" id="available" value="Tersedia" required>
+                      <label class="form-check-label" for="available">Tersedia</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="status" id="occupied" value="Terisi" required>
+                      <label class="form-check-label" for="occupied">Terisi</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="status" id="under_repair" value="Dalama Perbaikan" required>
+                      <label class="form-check-label" for="under_repair">Dalam Perbaikan</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="status">Status Kamar</label><br>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="status_kamar" id="putra" value="Putra" required>
+                      <label class="form-check-label" for="available">Putra</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="status_kamar" id="putra" value="Putri" required>
+                      <label class="form-check-label" for="occupied">Putri</label>
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <label for="">ALAMAT</label>
+                    <input class="form-control" type="text" name="alamat" id="alamat"
+                        value="{{ kamarkost.alamat }}" maxlength="100" placeholder="Alamat Dari google Maps"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="">MASA TENGGANG</label>
+                    <input class="form-control" type="date" name="masaTenggang" id="masaTenggang" value="{{ kamarkost.masaTenggang }}" placeholder="masaTenggang" maxlength="10" required>
+                <div class="input-group">
+                    <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="gambar" id="gambar">
+                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                    </div>
+                    <div class="input-group-append">
+                    <span class="input-group-text">Upload</span>
+                    </div>
+                </div>
+        <br>
+        <br>
+        <button class="btn btn-primary" href="{% url 'tampilan.tampkost' %}" type="submit">SUBMIT</button>
+        <a class="btn btn-default float-right" href="{% url 'tampilan.tampkost' %}">KEMBALI</a>
+
+    </form>
+</div>
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,112 @@
+{% extends 'layout/main.html' %}
+{% load static %}
+{% block concat %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  
+<style>
+  .contain {
+    width: 60%;
+    height: 400px;
+    background-color: aqua;
+  }
+  .asside{
+    
+    box-shadow: 0px 0px 32px -7px rgba(36,29,29,0.75);
+    -webkit-box-shadow: 0px 0px 32px -7px rgba(36,29,29,0.75);
+    -moz-box-shadow: 0px 0px 32px -7px rgba(36,29,29,0.75);
+    width:40% ;
+    height: 400px;
+  }
+  .contain-div{
+    display: flex;
+  }
+  img {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+  }
+  h1{
+    display: flex;
+    justify-content: center;
+  }
+  .namakost{
+    color: black;
+    margin-left: 10px;
+    font-family: 'Merriweather', serif;
+  }
+  .btnn{
+    margin:5px;
+  }
+  .pemesanan{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .judulsewah{
+  margin-top: 20px;
+  color: black;
+  font-family: 'Merriweather', serif;
+  }
+  .selogan{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+  }
+  .fasilitaskost{
+    margin-top: 10px;
+  }
+</style>
+<div class="card">
+  <div class="card-body row container-fluid p-1">
+    <div class="col-sm-7">
+      <img src="{% static kost.gambar|cut:"static/" %}" alt="Photo">
+    </div>
+    <div class="col-sm-5">
+      <h1 class="font-weight-bold">AJUKAN SEWAH</h1>
+      <p class="namakost">Nama Kost : {{ kost.namakost }}</p>
+      <p class="namakost">Harga Kost : {{ kost.Harga }}</p>
+      <p class="namakost" >Tipe Kamar : {{ kost.TipeKamar }}</p>
+      <p class="namakost" >Fasilitas : {{ kost.FasilitasKOst }}</p>
+      <div class="pemesanan">
+      {% for admin in data_user %}
+      <a class="btn btn-success mr-2" href="https://wa.me/{{ admin.NoTelp }}">whatsapp</a>
+      <a class="btn btn-success" href="https://www.google.com/maps/search/{{ kost.alamat }}">Alamat KOST</a>
+      {% endfor %}
+    </div>
+    <h4 class="selogan">LIHAT DOANG KAGA PESAN 
+    <br>
+    MINIMAL MODAL LA YAHHHHHHH
+    </h4>
+    </div>
+  </div>
+</div>
+<!-- <div class="contain-div">
+  <div class="contain">
+    <img src="{% static kost.gambar|cut:"static/" %}" alt="Photo">
+  </div>
+  <aside class="asside">
+    <h1 class="judulsewah">AJUKAN SEWAH</h1>
+    <br>
+    
+    <p class="namakost">Nama Kost : {{ kost.namakost }}</p>
+    <p class="namakost">Harga Kost : {{ kost.Harga }}</p>
+    <div class="pemesanan">
+    {% for admin in data_user %}
+    <a class="btnn btn btn-success" href="https://wa.me/{{ admin.NoTelp }}">whatsapp</a>
+    <a class="btnn btn btn-success" href="https://www.google.com/maps/search/{{ kost.alamat }}">Cari Alamat</a>
+    {% endfor %}
+  </div>
+  <h4 class="selogan">LIHAT DOANG KAGA PESAN 
+    <br>
+    MINIMAL SEWAH LA YAHHHHHHH
+  </h4>
+  </aside>
+</div> -->
+
+       
+
+{% endblock %}

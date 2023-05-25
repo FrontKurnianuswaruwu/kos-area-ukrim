@@ -1,0 +1,52 @@
+{% extends 'layout/main.html' %}
+{% block concat %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+		
+        img {
+            border: 1px solid black;
+            height: 560px;
+            display: flex;
+            justify-content: center;
+            
+        }
+        #form-title {
+            border-radius: 50px;
+            font-weight: bolder;
+            font-family: 'pacifico','cursive';
+            text-shadow: 2px 2px 4px #000;
+            
+      
+          }
+          @media (max-width: 768px) {
+            .d-flex{
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="d-flex justify-content-center">
+        <h3 id="form-title">KOST AREA UKRIM</h3>
+      </div>
+    <div  class="d-flex justify-content-center">
+        <img src="/static/assets/dist/img/171.jpg">
+        
+    </div>
+    
+    
+</body>
+</html>
+
+{% endblock %}

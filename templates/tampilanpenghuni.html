@@ -1,0 +1,117 @@
+{% extends 'layout/main.html' %}
+{% block concat %}
+<style>
+    @media (max-width: 768px) {
+        .table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+    }
+
+    .card-tools {
+        background-color: #38E54D;
+        padding: 5px;
+        border-radius: 6px;
+
+    }
+
+    .card-header:first-child {
+        background-color: #1D267D;
+
+    }
+
+    .cardwoy {
+        color: white;
+    }
+
+    .cardwoy:hover {
+        color: white;
+    }
+
+    .card-tools:hover {
+        transform: scale(1.1);
+        transition: 0.4s ease-in-out;
+        color: white;
+    }
+
+    .card-title {
+        color: white;
+    }
+</style>
+<div class="table">
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Data Penghuni</h3>
+                            <div class="card-header">
+                                <div class="card-tools">
+                                    <a class="cardwoy" href="{% url 'tambahpenghuni'%}">TAMBAH PENGHUNI</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID KAMAR</th>
+                                        <th>NO TELEPON</th>
+                                        <th>KTP</th>
+                                        <th>AKSI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {%for penghuni in pemilik %}
+                                    <tr>
+                                        <td>{{ penghuni.IdKamar }}</td>
+                                        <td>{{ penghuni.NoTelepon }}</td>
+                                        <td>{{ penghuni.ktp }}</td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm"
+                                                href="{% url 'updatepenghuni' penghuni.IdKamar %}">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                EDIT
+                                            </a>
+
+                                            <a class="btn btn-danger btn-sm"
+                                                onclick="return confirm('anda yakin ingin menghapus data ini dengan IDKAMAR = {{ penghuni.IdKamar }}') "
+                                                href="{% url 'deletepenghuni' penghuni.IdKamar %}">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                Delete
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                    {% endfor %}
+                                    </tfoot>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+
+       
+    

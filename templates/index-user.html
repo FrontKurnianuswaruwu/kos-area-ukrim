@@ -1,0 +1,262 @@
+{% extends 'layout/dashboard.html' %}
+{% block concat %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <style>
+    #form-title {
+
+      border-radius: 50px;
+      font-weight: bolder;
+      font-family: 'pacifico', 'cursive';
+      text-shadow: 2px 2px 4px #000;
+      display: flex;
+      justify-self: center;
+    }
+
+    .cari {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+    }
+
+    .harga1 {
+      height: 50%;
+      display: flex;
+      align-items: end;
+     
+    }
+
+    
+    .status {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .keren {
+      display: flex;
+      flex-direction: column;
+      padding-left: 20px;
+      padding-top: 10px;
+
+    }
+
+    .harga2 {
+
+      height: 25px;
+    }
+
+    .harga2:hover {
+      transform: scale(1.1);
+      color: aliceblue;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .submit {
+      border: 3px solid #B0DAFF;
+    }
+
+    .submit:hover {
+      background-color: #05BFDB;
+      transition: 0.3s ease-in-out;
+    }
+
+    .pemain {
+      width: 30%;
+      padding: 20px;
+
+    }
+
+    .submit:hover {
+      background-color: #05BFDB;
+    }
+
+    .fa {
+      color: #000;
+    }
+
+    .fa:hover {
+      color: #1D267D;
+      transform: scale(1.1);
+      transition: 0.3s ease-in-out;
+    }
+
+    .judul {
+      height: 100%;
+      display: flex;
+      align-items: end;
+
+    }
+
+    .status1 {
+      background-color: #5c24cc;
+      border-radius: 4px;
+      padding: 4px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+
+    }
+
+    .card {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .card-img-top{
+      background-color: #5c24cc;
+      width: 100%;
+      height: 260px;
+    }
+    .harga5{
+      height: 100%;
+      background-color: #05BFDB;
+      display: flex;
+      align-items: end;
+    }
+    .front{
+      height: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      margin-top: 10px;
+      
+    }
+    .status8{
+      background-color: #5c24cc;
+      height: 50%;
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      padding: 4px;
+      
+    }
+    .font1{
+      font-style: italic;
+      
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <div class="container-fluid">
+      <section class="content">
+        <div class="container-fluid">
+
+          <div class="d-flex justify-content-center">
+            <h3 id="form-title">KOST AREA UKRIM</h3>
+          </div>
+          <div class="card card-success">
+            <form method="get">
+              <div class="keren">
+                <a href="#" id="tombol-pemain">
+                  <i class="fa fa-filter" aria-hidden="true">Filter
+                  </i>
+                </a>
+                <div class="pemain" style="display:none;">
+                  <div>
+                    <label style="font-family: 'Merriweather', serif;" for="">Nama Kost</label>
+                    <input type="text" name="namakost" placeholder="Nama Kost">
+                  </div>
+                  <div>
+                    <label style="font-family: 'Merriweather', serif;" for="">Harga Minimal</label>
+                    <input type="number" name="harga_min" placeholder="Harga Min" min="0">
+                  </div>
+                  <div>
+                    <label style="font-family: 'Merriweather', serif;" for="">Harga Maksimal</label>
+                    <input type="number" name="harga_max" placeholder="Harga Max" min="0">
+                  </div>
+                  <label for="">
+                    <input style="font-family: 'Merriweather', serif;" type="checkbox" name="ac" placeholder="AC">
+                    AC</label>
+                    <label for="">
+                      <input style="font-family: 'Merriweather', serif;" type="checkbox" name="lemari" placeholder="lemari">
+                      Lemari</label>
+                      
+                        <label style="font-family: 'Merriweather', serif;" for="">
+                          <input type="checkbox" name="Putra" placeholder="Putra">
+                          Putra</label>
+                      
+                      <div>
+                        <label for="">
+                          <input style="font-family: 'Merriweather', serif;" type="checkbox" name="Putri" placeholder="Putri">
+                          Putri</label>
+                      </div>
+                  <div>
+                    <button style="font-family: 'Merriweather', serif;" class="submit" type="submit">Cari</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="card-body">
+              <div class="row">
+                <!-- looping -->
+
+                {%for kamarkost in kost %}
+                <div class="col-md-12 col-lg-6 col-xl-4">
+                  <div class="card mb-2 bg-gradient-dark">
+                    <img class="card-img-top" src="{{ kamarkost.gambar }}" alt="Dist Photo 1">
+                    <div class="card-img-overlay d-flex flex-column justify-content-end">
+                      <div class="status">
+                        <div class="status8">
+                        <td style="font-family: 'Merriweather', serif;" class="status7">{{ kamarkost.status_kamar }}</td>
+                      </div>
+                        <p style="font-family: 'Merriweather', serif;" class="status1">{{ kamarkost.status }}</p>
+
+
+                      </div>
+                      <div class="judul">
+                        
+                        <h5 class="card-title text-primary text-white">
+                          <p style="font-family: 'Merriweather', serif;" >{{ kamarkost.namakost }}</p>
+                          <div class="font1">
+                            <th style="font-family: 'Merriweather', serif;" >Fasilitas Kost:</th>
+
+                            <td style="font-family: 'Merriweather', serif;" >{{ kamarkost.FasilitasKOst }}</td>
+
+                          </div>
+                        </h5>
+                      </div>
+
+                      <div class="harga1">
+                        <a style="font-family: 'Merriweather', serif;" href="{% url 'detailkamar' kamarkost.idKamar   %}" class="">Detail</a>
+                        <div class="front">
+                      <p style="font-family: 'Merriweather', serif;" >Rp{{ kamarkost.Harga }}</p>
+                    </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+
+
+          <script>
+            const tombolPemain = document.getElementById('tombol-pemain');
+            const pemain = document.querySelector('.pemain');
+
+            tombolPemain.addEventListener('click', function () {
+              if (pemain.style.display === 'none') {
+                pemain.style.display = 'block';
+              } else {
+                pemain.style.display = 'none';
+              }
+            });
+          </script>
+
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,63 @@
+
+ {% extends 'layout/main.html' %}
+{% block concat %}
+<style>
+    @media (min-width: 768px) {
+    .col-md-3 {
+    flex: 0 0 100%;
+    max-width: 40%;
+}
+}
+.card-body {
+    box-shadow: 0px 0px 7px 5px rgba(36,29,29,0.75);
+-webkit-box-shadow: 0px 0px 7px 5px rgba(36,29,29,0.75);
+-moz-box-shadow: 0px 0px 7px 5px rgba(36,29,29,0.75);
+}
+.profil{
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+</style>
+ <div class="content-wrapper">
+    {% for admin in data_user %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <h1 class="profil">PROFIL</h1>
+                                <img class="profile-user-img img-fluid img-circle"
+                                    src="static/assets/dist/img/profil.png" alt="User profile picture">
+                            </div>
+                            <br>
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Nama</b> <a class="float-right">{{ admin.user_name }}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>ID</b> <a class="float-right">{{ admin.idNama }}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Nomo Telepon</b> <a class="float-right">{{ admin.NoTelp }}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Email</b> <a class="float-right">{{ admin.email }}</a>
+                                </li>
+                            </ul>
+                            <a href="{% url 'update' admin.idNama %}" class="btn btn-primary btn-block"><b>EDIT</b></a>
+                            <a class="btn btn-danger btn-block" href="{% url 'update' admin.idNama %}" onclick="return confirm('anda yakin ingin menghapus data ini dengan idNama = {{ admin.idNama }}') " ><b>DELETE</b></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+</div>
+</div>
+{% endblock %} 
