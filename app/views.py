@@ -86,11 +86,8 @@ def tampilan(request):
     }
     return render (request, 'tampilan.html',context)
 
-
-@login_required()
 def tambah_admin(request):
     return render(request, 'tambah-admin.html')
-
 
 def post_masuk(request):
     if request.method == 'POST':
@@ -99,7 +96,6 @@ def post_masuk(request):
         NoTelp = request.POST['NoTelp']
         email = request.POST['email']
         password = request.POST['password']
-   
         # create admin object
         admin = Admin(password=password,user_name=user_name, NoTelp=NoTelp,email=email, idNama=idNama)
         admin.save()
